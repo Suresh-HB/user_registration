@@ -3,7 +3,7 @@
 @Date: 2024-08-09
 @Last Modified by: Suresh
 @Last Modified: 2024-08-09 
-@Title : Rule-2 :Should have at least 1 Upper Case
+@Title : Rule3 Should have at least 1 numeric number in the password 
 '''
 
 import re
@@ -80,7 +80,8 @@ def valid_password(password):
     logger.info("Started valid_password method")
     # Rule1: Minimum 8 characters
     # Rule2: At least one uppercase letter
-    password_pattern = r'^(?=.*[A-Z]).{8,}$'
+    # Rule3: At least one numeric digit
+    password_pattern = r'^(?=.*[A-Z])(?=.*\d).{8,}$'
     pass_res = bool(re.match(password_pattern, password))
     logger.debug("Validating the user password according to pattern matching")
     return pass_res
