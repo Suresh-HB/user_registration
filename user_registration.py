@@ -1,11 +1,10 @@
 '''
 @Author: Suresh
-@Date: 2024-08-09
+@Date: 2024-08-10
 @Last Modified by: Suresh
-@Last Modified: 2024-08-09 
-@Title : Rule3 Should have at least 1 numeric number in the password 
+@Last Modified: 2024-08-10
+@Title : Has exactly 1 Special Character
 '''
-
 import re
 import myloggingfile as mlf
 
@@ -81,10 +80,20 @@ def valid_password(password):
     # Rule1: Minimum 8 characters
     # Rule2: At least one uppercase letter
     # Rule3: At least one numeric digit
-    password_pattern = r'^(?=.*[A-Z])(?=.*\d).{8,}$'
+    # Rule4: Exactly one special character
+    password_pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$'
+    special_char_count_pattern = r'^[A-Za-z\d]*[@#$%^&+=][A-Za-z\d]*$'
+    
+    # Check the basic password rules
     pass_res = bool(re.match(password_pattern, password))
+    
+    # Check the special character count
+    special_char_count = len(re.findall(r'[!@#$%^&*()_+={}\[\]|\\:;"\'<>,.?/~`-]', password))
+    special_char_res = (special_char_count == 1)
+    
     logger.debug("Validating the user password according to pattern matching")
-    return pass_res
+    
+    return pass_res and special_char_res
 
 def main():
     logger.info("Started main function")
