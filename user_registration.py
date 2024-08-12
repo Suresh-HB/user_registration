@@ -3,7 +3,7 @@
 @Date: 2024-08-09
 @Last Modified by: Suresh
 @Last Modified: 2024-08-09 
-@Title : As a User need to follow pre-defined Mobile Format
+@Title : As a User need to follow pre-defined Password rules.Rule1 minimum 8
 '''
 
 import re
@@ -69,6 +69,20 @@ def mob_num_valid(mob_num):
     logger.debug("Validating the user mobile number according to pattern matching")
     return mob_res
 
+def valid_password(password):
+    """
+    Description: Function to validate the user password according to the pattern.
+    Parameters:
+        password : User password to be validated.
+    Returns:
+        result : True if the password matches the pattern, False otherwise.
+    """
+    logger.info("Started valid_password method")
+    password_pattern = r'^.{8,}$'
+    pass_res = bool(re.match(password_pattern, password))
+    logger.debug("Validating the user password according to pattern matching")
+    return pass_res
+
 def main():
     logger.info("Started main function")
 
@@ -81,13 +95,17 @@ def main():
     email = input("Enter your email id: ")
     logger.debug(f"Taking email id as input from the user: {email}")
 
-    mob_num = input("Enter your mobile number : ")
+    mob_num = input("Enter your mobile number (format: XX XXXXXXXXXX): ")
     logger.debug(f"Taking mobile number as input from the user: {mob_num}")
+
+    password = input("Enter your password: ")
+    logger.debug(f"Taking password as input from the user")
 
     first_name_valid = valid_first_name(first_name)
     last_name_valid = valid_last_name(last_name)
     email_valid = valid_email_id(email)
-    mob_num_valid_result = mob_num_valid(mob_num)  # Renamed variable to avoid conflict
+    mob_num_valid_result = mob_num_valid(mob_num)
+    password_valid = valid_password(password)
 
     if first_name_valid:
         logger.info(f"User Entered First name = '{first_name}' is valid")
@@ -109,7 +127,12 @@ def main():
     else:
         logger.info(f"User entered Mobile number = '{mob_num}' is invalid")
 
-    if not (first_name_valid and last_name_valid and email_valid and mob_num_valid_result):
+    if password_valid:
+        logger.info(f"User Entered Password is valid")
+    else:
+        logger.info(f"User entered Password is invalid")
+
+    if not (first_name_valid and last_name_valid and email_valid and mob_num_valid_result and password_valid):
         logger.info("Pattern Matches Fails:")
         if not first_name_valid:
             logger.info(f"First name = '{first_name}' did not match pattern")
@@ -119,6 +142,8 @@ def main():
             logger.info(f"Email id = '{email}' did not match pattern")
         if not mob_num_valid_result:
             logger.info(f"Mobile number = '{mob_num}' did not match pattern")
+        if not password_valid:
+            logger.info(f"Password did not match pattern")
 
     logger.info("Exit main function")
 
