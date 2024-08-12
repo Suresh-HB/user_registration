@@ -3,7 +3,7 @@
 @Date: 2024-08-09
 @Last Modified by: Suresh
 @Last Modified: 2024-08-09 
-@Title : As a User need to follow pre-defined Password rules.Rule1 minimum 8 characters
+@Title : Rule-2 :Should have at least 1 Upper Case
 '''
 
 import re
@@ -78,7 +78,9 @@ def valid_password(password):
         result : True if the password matches the pattern, False otherwise.
     """
     logger.info("Started valid_password method")
-    password_pattern = r'^.{8,}$'
+    # Rule1: Minimum 8 characters
+    # Rule2: At least one uppercase letter
+    password_pattern = r'^(?=.*[A-Z]).{8,}$'
     pass_res = bool(re.match(password_pattern, password))
     logger.debug("Validating the user password according to pattern matching")
     return pass_res
