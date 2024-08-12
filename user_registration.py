@@ -3,8 +3,7 @@
 @Date: 2024-08-09
 @Last Modified by: Suresh
 @Last Modified: 2024-08-09 
-@Title : As a User need to enter a valid email
-
+@Title : As a User need to follow pre-defined Mobile Format
 '''
 
 import re
@@ -43,7 +42,6 @@ def valid_last_name(last_name):
     return result
 
 def valid_email_id(email):
-
     """
     Description: Function to validate the user email id according to the pattern.
     Parameters:
@@ -51,12 +49,25 @@ def valid_email_id(email):
     Returns:
         result : True if the email id matches the pattern, False otherwise.
     """
-
     logger.info("Started valid_email_id method")
     email_pattern = r'^[a-zA-Z.]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     res = bool(re.match(email_pattern, email))
     logger.debug("Validating the user email id according to pattern matching")
     return res
+
+def mob_num_valid(mob_num):
+    """
+    Description: Function to validate the user mobile number according to the pattern.
+    Parameters:
+        mob_num : User mobile number to be validated.
+    Returns:
+        result : True if the mobile number matches the pattern, False otherwise.
+    """
+    logger.info("Started mob_num_valid method")
+    pattern = r'^\d{2} \d{10}$'
+    mob_res = bool(re.match(pattern, mob_num))
+    logger.debug("Validating the user mobile number according to pattern matching")
+    return mob_res
 
 def main():
     logger.info("Started main function")
@@ -70,12 +81,14 @@ def main():
     email = input("Enter your email id: ")
     logger.debug(f"Taking email id as input from the user: {email}")
 
-    
+    mob_num = input("Enter your mobile number : ")
+    logger.debug(f"Taking mobile number as input from the user: {mob_num}")
+
     first_name_valid = valid_first_name(first_name)
     last_name_valid = valid_last_name(last_name)
     email_valid = valid_email_id(email)
+    mob_num_valid_result = mob_num_valid(mob_num)  # Renamed variable to avoid conflict
 
- 
     if first_name_valid:
         logger.info(f"User Entered First name = '{first_name}' is valid")
     else:
@@ -91,8 +104,12 @@ def main():
     else:
         logger.info(f"User entered Email id = '{email}' is invalid")
 
+    if mob_num_valid_result:
+        logger.info(f"User Entered Mobile number = '{mob_num}' is valid")
+    else:
+        logger.info(f"User entered Mobile number = '{mob_num}' is invalid")
 
-    if not (first_name_valid and last_name_valid and email_valid):
+    if not (first_name_valid and last_name_valid and email_valid and mob_num_valid_result):
         logger.info("Pattern Matches Fails:")
         if not first_name_valid:
             logger.info(f"First name = '{first_name}' did not match pattern")
@@ -100,6 +117,8 @@ def main():
             logger.info(f"Last name = '{last_name}' did not match pattern")
         if not email_valid:
             logger.info(f"Email id = '{email}' did not match pattern")
+        if not mob_num_valid_result:
+            logger.info(f"Mobile number = '{mob_num}' did not match pattern")
 
     logger.info("Exit main function")
 
