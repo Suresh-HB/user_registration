@@ -3,7 +3,7 @@
 @Date: 2024-08-09
 @Last Modified by: Suresh
 @Last Modified: 2024-08-09 
-@Title : As a User need to follow pre-defined Password rules.Rule1 minimum 8
+@Title : As a User need to follow pre-defined Password rules.Rule1 minimum 8 characters
 '''
 
 import re
