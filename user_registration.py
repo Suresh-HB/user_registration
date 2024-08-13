@@ -50,7 +50,7 @@ def valid_email_id(email):
         result : True if the email id matches the pattern, False otherwise.
     """
     logger.info("Started valid_email_id method")
-    email_pattern = r'^[a-zA-Z.]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    email_pattern = r'^[a-zA-Z0-9._%+-]+@bl\.co(\.in)?$'
     res = bool(re.match(email_pattern, email))
     logger.debug("Validating the user email id according to pattern matching")
     return res
@@ -64,7 +64,7 @@ def mob_num_valid(mob_num):
         result : True if the mobile number matches the pattern, False otherwise.
     """
     logger.info("Started mob_num_valid method")
-    pattern = r'^\d{2} \d{10}$'
+    pattern = r'^\+?[0-9]{2}\s[0-9]{10}$'
     mob_res = bool(re.match(pattern, mob_num))
     logger.debug("Validating the user mobile number according to pattern matching")
     return mob_res
@@ -98,7 +98,7 @@ def main():
     email = input("Enter your email id: ")
     logger.debug(f"Taking email id as input from the user: {email}")
 
-    mob_num = input("Enter your mobile number (format: XX XXXXXXXXXX): ")
+    mob_num = input("Enter your mobile number : ")
     logger.debug(f"Taking mobile number as input from the user: {mob_num}")
 
     password = input("Enter your password: ")
