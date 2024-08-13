@@ -53,7 +53,7 @@ def valid_email_id(email):
     """
 
     logger.info("Started valid_email_id method")
-    email_pattern = r'^[a-zA-Z.]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    email_pattern = r'^[a-zA-Z0-9._%+-]+@bl\.co(\.in)?$'
     res = bool(re.match(email_pattern, email))
     logger.debug("Validating the user email id according to pattern matching")
     return res
