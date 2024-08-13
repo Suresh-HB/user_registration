@@ -63,7 +63,8 @@ def mob_num_valid(mob_num):
         result : True if the mobile number matches the pattern, False otherwise.
     """
     logger.info("Started mob_num_valid method")
-    pattern = r'^\d{2} \d{10}$'
+    pattern = r'^\+?[0-9]{2}\s[0-9]{10}$'
+    
     mob_res = bool(re.match(pattern, mob_num))
     logger.debug("Validating the user mobile number according to pattern matching")
     return mob_res
