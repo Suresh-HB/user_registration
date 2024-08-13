@@ -1,8 +1,8 @@
 '''
 @Author: Suresh
-@Date: 2024-08-10
+@Date: 2024-08-12
 @Last Modified by: Suresh
-@Last Modified: 2024-08-10
+@Last Modified: 2024-08-12
 @Title : Has exactly 1 Special Character
 '''
 import re
@@ -84,7 +84,6 @@ def valid_password(password):
     password_pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$'
     special_char_count_pattern = r'^[A-Za-z\d]*[@#$%^&+=][A-Za-z\d]*$'
     
-    # Check the basic password rules
     pass_res = bool(re.match(password_pattern, password))
     
     # Check the special character count
