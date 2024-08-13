@@ -77,6 +77,7 @@ def valid_password(password):
     Returns:
         result : True if the password matches the pattern, False otherwise.
     """
+    
     logger.info("Started valid_password method")
     # Rule1: Minimum 8 characters
     # Rule2: At least one uppercase letter
