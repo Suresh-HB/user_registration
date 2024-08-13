@@ -83,17 +83,13 @@ def valid_password(password):
     # Rule2: At least one uppercase letter
     # Rule3: At least one numeric digit
     # Rule4: Exactly one special character
-    password_pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$'
-    special_char_count_pattern = r'^[A-Za-z\d]*[@#$%^&+=][A-Za-z\d]*$'
-    
+    password_pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$'    
     pass_res = bool(re.match(password_pattern, password))
     
-    # Check the special character count
     special_char_count = len(re.findall(r'[!@#$%^&*()_+={}\[\]|\\:;"\'<>,.?/~`-]', password))
     special_char_res = (special_char_count == 1)
     
     logger.debug("Validating the user password according to pattern matching")
-    
     return pass_res and special_char_res
 
 def main():
@@ -108,7 +104,7 @@ def main():
     email = input("Enter your email id: ")
     logger.debug(f"Taking email id as input from the user: {email}")
 
-    mob_num = input("Enter your mobile number (format: XX XXXXXXXXXX): ")
+    mob_num = input("Enter your mobile number : ")
     logger.debug(f"Taking mobile number as input from the user: {mob_num}")
 
     password = input("Enter your password: ")
