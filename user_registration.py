@@ -11,7 +11,7 @@ import re
 import myloggingfile as mlf
 logger = mlf.logger_init("user_registration.ipynb")
 
-def valid_frist_name(frist_name):
+def valid_first_name(first_name):
 
     """
     Description: Function to validating user frist name as per the pattern. 
@@ -23,8 +23,8 @@ def valid_frist_name(frist_name):
 
     logger.info(" inside valid_frist_name function")
 
-    frist_name_pattern = r'[A-Z][a-z]{2,}'
-    res = bool(re.match(frist_name_pattern, frist_name))
+    first_name_pattern = r'[A-Z][a-z]{2,}'
+    res = bool(re.match(first_name_pattern, first_name))
     logger.debug(f" validating the user frist name according to pattern matching ")
     logger.info(" returning the bool value to main function")
     return res
@@ -51,27 +51,27 @@ def valid_last_name(last_name):
 def main():
     logger.info(" Started main function")
 
-    frist_name = input(" Enter your frist name : ")
-    logger.debug(f" Taking frist name as input from the user : {frist_name}")
+    first_name = input(" Enter your frist name : ")
+    logger.debug(f" Taking frist name as input from the user : {first_name}")
 
     last_name = input("Enter last name of the user : ")
     logger.debug(f" Taking last name as input from the user : {last_name}")
 
     logger.info(" calling valid_frist_name method")
-    res = valid_frist_name(frist_name)
+    res = valid_first_name(first_name)
 
     if res == True:
         
         logger.info(" calling valid_last_name method")
         result = valid_last_name(last_name)
         if result:
-            logger.info(f" User Entered Frist name = '{frist_name}' is valid")
+            logger.info(f" User Entered Frist name = '{first_name}' is valid")
             logger.info(f" User Entered Last name = '{last_name}' is valid")
         else:
             logger.info(f" User Entered Last name = '{last_name}' is invalid")
 
     else:
-        logger.info(f" User entered Frist name = '{frist_name}' invalid")
+        logger.info(f" User entered Frist name = '{first_name}' invalid")
 
     logger.info(" exit main function")
 
