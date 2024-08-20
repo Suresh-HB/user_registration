@@ -2,8 +2,8 @@
 @Author: Suresh
 @Date: 2024-08-12
 @Last Modified by: Suresh
-@Last Modified: 2024-08-12
-@Title : Has exactly 1 Special Character
+@Last Modified: 2024-08-20
+@Title : Should clear all email samples provided separately
 '''
 import re
 import myloggingfile as mlf
@@ -49,7 +49,7 @@ def valid_email_id(email):
         result : True if the email id matches the pattern, False otherwise.
     """
     logger.info("Started valid_email_id method")
-    email_pattern =  r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     res = bool(re.match(email_pattern, email))
     logger.debug("Validating the user email id according to pattern matching")
     return res
