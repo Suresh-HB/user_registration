@@ -47,3 +47,7 @@ def test_check_mobile_numb_valid():
 def test_check_password_valid():
     assert valid_password('@Bridgelabs2Future') == 1
     assert valid_password("BridgelabsFuture") == 0
+
+
+if __name__=='__main__':
+    pytest.main()
